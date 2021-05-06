@@ -1,0 +1,9 @@
+<?php
+
+function dc_preprocess_page(&$variables) {
+
+}
+
+function dc_preprocess_node(&$variables) {
+  
+}
