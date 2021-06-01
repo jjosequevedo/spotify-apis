@@ -43,3 +43,10 @@ Follow [Docksal environment setup instructions](https://docs.docksal.io/getting-
 
 When the automated install is complete the command line output will display the admin username and password.
 
+---
+
+## Migration
+- No DB Dump
+
+- [Spotify API] (https://developer.spotify.com/documentation/web-api/)
+- [Endpoint] (https://api.spotify.com/v1/) 
