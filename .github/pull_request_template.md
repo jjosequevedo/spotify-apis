@@ -15,12 +15,6 @@ Artist
 - [ ] Spotify link
 - [ ] 10 Top tracks w/link detail (name and image)
 - [ ] 10 albums (not singles) w/link to spotify (name and image)
-Playlist
-- [ ] Name
-- [ ] Description
-- [ ] Spotify link
-- [ ] Image (1)
-- [ ] Songs w/link to detail page
 Home page
 - [ ] Carrousel of Top 20 songs
-- [ ] Grid w/ 10 playlists link “more” to playlists page and each playlist w/link to detail page.
+- [ ] Grid w/ 10 artists link “more” to artists page and each artist w/link to detail page.
