@@ -7,7 +7,7 @@
 - [ ] Release date formatted 2012-06-12 00:00:00T05Z --> 06-12-2012 (mm/dd/yyyy)
 - [ ] Genres
 - [ ] popularity
-Artist
+- Artist
 - [ ] Name
 - [ ] No. of followers
 - [ ] Genres
@@ -15,6 +15,6 @@ Artist
 - [ ] Spotify link
 - [ ] 10 Top tracks w/link detail (name and image)
 - [ ] 10 albums (not singles) w/link to spotify (name and image)
-Home page
+- Home page
 - [ ] Carrousel of Top 20 songs
 - [ ] Grid w/ 10 artists link “more” to artists page and each artist w/link to detail page.
