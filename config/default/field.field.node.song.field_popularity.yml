@@ -1,0 +1,25 @@
+uuid: 188007c0-c0af-431b-8f71-c9acad8501c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_popularity
+    - node.type.song
+id: node.song.field_popularity
+field_name: field_popularity
+entity_type: node
+bundle: song
+label: Popularity
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

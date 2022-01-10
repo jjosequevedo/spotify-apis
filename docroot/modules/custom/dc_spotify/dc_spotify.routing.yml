@@ -1,0 +1,23 @@
+dc_spotify.admin.config:
+  path: '/admin/config/dc-spotify'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'DC Spotify'
+  requirements:
+    _permission: 'administer dc_spotify'
+
+dc_spotify.load_data:
+  path: '/admin/config/dc-spotify/load-data'
+  defaults:
+    _title: 'Load data'
+    _form: 'Drupal\dc_spotify\Form\LoadDataForm'
+  requirements:
+    _permission: 'administer dc_spotify load data'
+
+dc_spotify.spotify_settings:
+  path: '/admin/config/dc-spotify/spotify-settings'
+  defaults:
+    _title: 'Spotify settings'
+    _form: 'Drupal\dc_spotify\Form\SpotifySettingsForm'
+  requirements:
+    _permission: 'administer dc_spotify configuration'

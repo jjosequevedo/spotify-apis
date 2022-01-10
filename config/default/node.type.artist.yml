@@ -1,0 +1,18 @@
+uuid: a286da6d-63f1-4f0f-a4d4-2a1748669419
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Artist
+type: artist
+description: 'Artist Detail page'
+help: ''
+new_revision: true
+preview_mode: 2
+display_submitted: true

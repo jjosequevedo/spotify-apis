@@ -89,6 +89,7 @@
  * @endcode
  */
 $databases = array();
+//$settings['config_sync_directory'] =  dirname($app_root) . '../config/default';
 
 /**
  * Customizing database settings.
@@ -280,7 +281,7 @@ $config_directories = array(
  *   service requires the install profile use the 'install_profile' container
  *   parameter. Functional code can use \Drupal::installProfile().
  */
-$settings['install_profile'] = 'standard';
+$settings['install_profile'] = 'dc';
 
 /**
  * Salt for one-time login links, cancel links, form tokens, etc.
