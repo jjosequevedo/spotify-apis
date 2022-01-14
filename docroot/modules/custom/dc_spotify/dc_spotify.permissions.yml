@@ -1,0 +1,8 @@
+administer dc_spotify:
+  title: 'Administer dc_spotify'
+
+administer dc_spotify load data:
+  title: 'Administer dc_spotify load data'
+
+administer dc_spotify configuration:
+  title: 'Administer dc_spotify configuration'

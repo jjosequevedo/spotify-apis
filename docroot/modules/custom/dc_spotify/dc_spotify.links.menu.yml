@@ -1,0 +1,23 @@
+# Parent link.
+dc_spotify.spotify:
+  title: DC Spotify
+  description: Administer DC Spotify.
+  route_name: dc_spotify.admin.config
+  parent: system.admin_config
+  weight: 100
+
+# Child link.
+dc_spotify.spotify_settings:
+  title: Spotify settings
+  description: Spotify settings.
+  parent: dc_spotify.spotify
+  route_name: dc_spotify.spotify_settings
+  weight: 1
+
+# Child link.
+dc_spotify.spotify_load_data:
+  title: Load data
+  description: Load data from Spotify.
+  parent: dc_spotify.spotify
+  route_name: dc_spotify.load_data
+  weight: 2

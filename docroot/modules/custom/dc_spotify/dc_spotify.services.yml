@@ -1,0 +1,4 @@
+services:
+  dc_spotify.spotify_manager:
+    class: Drupal\dc_spotify\SpotifyManager
+    arguments: ['@http_client', '@entity_type.manager', '@config.factory', '@cache.default']

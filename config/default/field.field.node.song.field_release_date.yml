@@ -1,0 +1,21 @@
+uuid: 72229eee-f7eb-40cf-a382-9c4790fa1003
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_release_date
+    - node.type.song
+  module:
+    - datetime
+id: node.song.field_release_date
+field_name: field_release_date
+entity_type: node
+bundle: song
+label: 'Release date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

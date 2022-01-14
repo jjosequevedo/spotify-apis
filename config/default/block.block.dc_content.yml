@@ -1,0 +1,22 @@
+uuid: 51374001-e530-4d1f-8972-4a0229183668
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - dc
+_core:
+  default_config_hash: 9EoWV2Lot6FVSr50t4hoKgiz1LIXYWNG-IIPYsWxBqo
+id: dc_content
+theme: dc
+region: content
+weight: -4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }
