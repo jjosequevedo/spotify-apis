@@ -79,7 +79,12 @@
         <main id="content" class="column main-content" role="main">
           <section class="section">
             <a id="main-content" tabindex="-1"></a>
-            {{ page.content }}
+            {% if is_front %}
+              {{ drupal_block('views_block:songs-block_top_twenty') }}
+              {{ drupal_block('views_block:artists-block_ten_artists') }}
+            {% else %}
+              {{ page.content }}
+            {% endif %}
           </section>
         </main>
         {% if page.sidebar_first %}

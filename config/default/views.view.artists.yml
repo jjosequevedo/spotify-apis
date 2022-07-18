@@ -515,6 +515,8 @@ display:
         style: false
         row: false
         pager: false
+        link_display: false
+        link_url: false
       filter_groups:
         operator: AND
         groups:
@@ -729,6 +731,8 @@ display:
         options:
           items_per_page: 10
           offset: 0
+      link_display: page_1
+      link_url: ''
     cache_metadata:
       max-age: -1
       contexts:

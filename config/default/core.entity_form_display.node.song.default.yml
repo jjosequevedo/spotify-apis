@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.song.field_album
+    - field.field.node.song.field_album_name
     - field.field.node.song.field_artist
     - field.field.node.song.field_list_genres
     - field.field.node.song.field_popularity
@@ -35,6 +36,14 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
+  field_album_name:
+    weight: 129
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_artist:
     weight: 121

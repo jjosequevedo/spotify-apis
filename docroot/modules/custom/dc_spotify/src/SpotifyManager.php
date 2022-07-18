@@ -69,10 +69,10 @@ class SpotifyManager {
    *   The cache.
    */
   public function __construct(
-    ClientInterface            $httpClient,
+    ClientInterface $httpClient,
     EntityTypeManagerInterface $entityTypeManager,
-    ConfigFactoryInterface     $configFactory,
-    CacheBackendInterface      $cache
+    ConfigFactoryInterface $configFactory,
+    CacheBackendInterface $cache
   ) {
     $this->httpClient = $httpClient;
     $this->entityTypeManager = $entityTypeManager;
@@ -82,7 +82,10 @@ class SpotifyManager {
   }
 
   /**
+   * Get token.
+   *
    * @return false|string
+   *   Return token.
    */
   protected function getToken() {
     $settings = $this->configFactory->get('dc_spotify.settings');
@@ -109,39 +112,48 @@ class SpotifyManager {
   }
 
   /**
+   * Get terms from Genres vocabulary.
+   *
    * @param array $term_names
+   *   Term names.
    *
    * @return array
-   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
-   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
-   * @throws \Drupal\Core\Entity\EntityStorageException
+   *   Return list of genre term.
    */
-  protected function vocabularyGenres(array $term_names) {
+  protected function vocabularyGenres(array $term_names): array {
     $result = [];
-    $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
-    foreach ($term_names as $term_name) {
-      $values = [
-        'vid' => 'genres',
-        'name' => $term_name,
-      ];
-      /** @var \Drupal\taxonomy\Entity\Term[] $term */
-      $term = $term_storage->loadByProperties($values);
-      if ($term) {
-        $term = reset($term);
+    try {
+      $term_storage = $this->entityTypeManager->getStorage('taxonomy_term');
+      foreach ($term_names as $term_name) {
+        $values = [
+          'vid' => 'genres',
+          'name' => $term_name,
+        ];
+        /** @var \Drupal\taxonomy\Entity\Term[] $term */
+        $term = $term_storage->loadByProperties($values);
+        if ($term) {
+          $term = reset($term);
+        }
+        else {
+          $term = $term_storage->create($values);
+          $term->save();
+        }
+        $result[] = $term->id();
       }
-      else {
-        $term = $term_storage->create($values);
-        $term->save();
-      }
-      $result[] = $term->id();
+    }
+    catch (InvalidPluginDefinitionException | PluginNotFoundException | EntityStorageException $e) {
+      $this->logger->error($e->getTraceAsString());
     }
     return $result;
   }
 
   /**
+   * Load artists from Spotify.
+   *
    * @return bool
+   *   Return TRUE if the action was successful, FALSE otherwise.
    */
-  public function loadArtists() {
+  public function loadArtists(): bool {
     try {
       $token = $this->getToken();
       if ($token) {
@@ -183,24 +195,27 @@ class SpotifyManager {
               $artist_node->save();
             }
             $this->loadSongs($token, $artist_node);
+            $this->loadAlbums($token, $artist_node);
           }
           return TRUE;
         }
       }
     }
-    catch (GuzzleException|InvalidPluginDefinitionException|PluginNotFoundException|EntityStorageException $e) {
+    catch (GuzzleException | InvalidPluginDefinitionException | PluginNotFoundException | EntityStorageException $e) {
       $this->logger->error($e->getTraceAsString());
     }
     return FALSE;
   }
 
   /**
-   * @param $token
-   * @param \Drupal\node\Entity\Node $artist_node
+   * Load songs from Spotify.
    *
-   * @return void
+   * @param mixed $token
+   *   Token.
+   * @param \Drupal\node\Entity\Node $artist_node
+   *   Artist node.
    */
-  protected function loadSongs($token, Node $artist_node) {
+  protected function loadSongs($token, Node $artist_node): void {
     try {
       $spotify_artist_id = $artist_node->get('field_spotify_id')->getString();
       $response = $this->httpClient->request(
@@ -233,12 +248,13 @@ class SpotifyManager {
                 'target_id' => $file->id(),
                 'alt' => $track['album']['name'],
               ],
+              'field_album_name' => $track['album']['name'],
               'field_artist' => $artist_node->id(),
               'field_list_genres' => explode(
                 ', ', $artist_node->get('field_list_genres')->getString()
               ),
               'field_popularity' => $track['popularity'],
-              'field_release_date' => $date_time->format('m/d/Y'),
+              'field_release_date' => $date_time->format('Y-m-d'),
               'field_spotify_song_link' => [
                 'title' => 'Spotify detail',
                 'uri' => $track['external_urls']['spotify'],
@@ -250,7 +266,66 @@ class SpotifyManager {
         }
       }
     }
-    catch (GuzzleException|InvalidPluginDefinitionException|PluginNotFoundException|EntityStorageException $e) {
+    catch (GuzzleException | InvalidPluginDefinitionException | PluginNotFoundException | EntityStorageException $e) {
+      $this->logger->error($e->getTraceAsString());
+    }
+  }
+
+  /**
+   * Load albums from Spotify.
+   *
+   * @param mixed $token
+   *   Token.
+   * @param \Drupal\node\Entity\Node $artist_node
+   *   Artist node.
+   */
+  protected function loadAlbums($token, Node $artist_node): void {
+    try {
+      $spotify_artist_id = $artist_node->get('field_spotify_id')->getString();
+      $response = $this->httpClient->request(
+        'GET',
+        'https://api.spotify.com/v1/artists/' . $spotify_artist_id . '/albums?include_groups=album&market=ES',
+        [
+          'headers' => [
+            'Authorization' => $token,
+          ],
+        ]
+      );
+      if ($response && $response->getStatusCode() === 200) {
+        $content = json_decode($response->getBody()->getContents(), TRUE);
+        $node = $this->entityTypeManager->getStorage('node');
+        foreach ($content['items'] as $album) {
+          $exist_album = $node->loadByProperties([
+            'type' => 'album',
+            'field_spotify_id' => $album['id'],
+          ]);
+          if (!$exist_album) {
+            $data = file_get_contents($album['images'][0]['url']);
+            $file = file_save_data($data, 'public://' . $album['id'] . '.jpeg');
+            $date_time = new DrupalDateTime($album['release_date']);
+            /** @var \Drupal\node\Entity\Node $album_node */
+            $album_node = $node->create([
+              'type' => 'album',
+              'title' => $album['name'],
+              'field_spotify_id' => $album['id'],
+              'field_album' => [
+                'target_id' => $file->id(),
+                'alt' => $album['name'],
+              ],
+              'field_artist' => $artist_node->id(),
+              'field_release_date' => $date_time->format('Y-m-d'),
+              'field_spotify_album_link' => [
+                'title' => 'Spotify detail',
+                'uri' => $album['external_urls']['spotify'],
+              ],
+              'status' => 1,
+            ]);
+            $album_node->save();
+          }
+        }
+      }
+    }
+    catch (GuzzleException | InvalidPluginDefinitionException | PluginNotFoundException | EntityStorageException $e) {
       $this->logger->error($e->getTraceAsString());
     }
   }

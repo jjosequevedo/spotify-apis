@@ -1,0 +1,21 @@
+owl-carousel:
+  remote: https://cdnjs.com/libraries/owl-carousel
+  version: 2.2.1
+  license:
+    name: MIT
+    url: https://github.com/cdnjs/cdnjs/blob/master/LICENSE
+    gpl-compatible: true
+  css:
+    theme:
+      'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.carousel.min.css': { type: external, minified: true }
+      'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/assets/owl.theme.default.min.css': { type: external, minified: true }
+  js:
+    'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.min.js': { type: external, minified: true }
+  dependencies:
+    - core/jquery
+
+homepage-carousel:
+  js:
+    js/homepage-carousel.js: {}
+  dependencies:
+    - dc/owl-carousel

@@ -1,4 +1,4 @@
-uuid: 12ea3d4b-0b95-4ec8-bdcb-f3de79a4dcf3
+uuid: 3e7daade-8306-47e7-b57f-c9922c6888c6
 langcode: en
 status: true
 dependencies:
@@ -11,7 +11,7 @@ _core:
 id: dc_help
 theme: dc
 region: content
-weight: -6
+weight: -30
 provider: null
 plugin: help_block
 settings:

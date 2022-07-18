@@ -12,20 +12,25 @@ git clone https://git.jobsity.com/jobsity/drupal-challenge challenge-drupal
 cd challenge-drupal
 
 
-### Initialize the site
-This will initialize local settings and install the site via drush
-fin init
-
+### Installation
+Run command _fin init_ and the installation will start.
 
 ### Point your browser to
-http://challenge-drupal.docksal.site
+http://challengedrupal.docksal.site
 
-When the automated install is complete the command line output will display the admin username and password. This happens before importing configuration.
+Log in with these credentials:
+
+username: _admin_
+
+password: _admin_
 
 ### Step #3: Load data in your site
+_(Optional) If the keys have not been previously configured._
 1. Go to Configuration > DC Spotify > Spotify settings
-2. Insert credentials from spotify `client_id` and `client_secret`. (Check the information [App Settings](https://developer.spotify.com/documentation/general/guides/authorization/app-settings/))
+2. Insert credentials from spotify `client_id` and `client_secret`. (More information [App Settings](https://developer.spotify.com/documentation/general/guides/authorization/app-settings/))
 3. Save it
-4. Go to Configuration > DC Spotify > Load data
-5. Click on the button `Load data` and wait until the message is displayed `All information was loaded successfully from Spotify.`
 
+### Load data from Spotify
+1. Go to Configuration > DC Spotify > Load data
+2. Click on the button `Load data` and wait until the message is displayed `All information was loaded successfully from Spotify.`
+3. Clear caches

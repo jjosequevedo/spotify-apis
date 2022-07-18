@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.song.field_album
+    - field.field.node.song.field_album_name
     - field.field.node.song.field_artist
     - field.field.node.song.field_list_genres
     - field.field.node.song.field_popularity
@@ -26,6 +27,7 @@ content:
     region: content
 hidden:
   field_album: true
+  field_album_name: true
   field_artist: true
   field_list_genres: true
   field_popularity: true

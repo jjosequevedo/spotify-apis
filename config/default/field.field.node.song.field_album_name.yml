@@ -1,0 +1,19 @@
+uuid: 95109043-7095-4ac9-b294-c54bf2ca47f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_album_name
+    - node.type.song
+id: node.song.field_album_name
+field_name: field_album_name
+entity_type: node
+bundle: song
+label: 'Album name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

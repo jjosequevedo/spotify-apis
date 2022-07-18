@@ -1,4 +1,4 @@
-uuid: 23a3392e-6a73-4779-a290-6dc8ead7c839
+uuid: 48775c5c-e40d-436c-a49b-96d72a6c20c2
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ _core:
 id: dc_local_tasks
 theme: dc
 region: content
-weight: -7
+weight: -40
 provider: null
 plugin: local_tasks_block
 settings:

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.song.field_album
+    - field.field.node.song.field_album_name
     - field.field.node.song.field_artist
     - field.field.node.song.field_list_genres
     - field.field.node.song.field_popularity
@@ -22,7 +23,7 @@ bundle: song
 mode: default
 content:
   field_album:
-    weight: 103
+    weight: 3
     label: above
     settings:
       image_style: ''
@@ -30,8 +31,16 @@ content:
     third_party_settings: {  }
     type: image
     region: content
+  field_album_name:
+    weight: 7
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
   field_artist:
-    weight: 101
+    weight: 1
     label: above
     settings:
       link: true
@@ -39,7 +48,7 @@ content:
     type: entity_reference_label
     region: content
   field_list_genres:
-    weight: 107
+    weight: 6
     label: above
     settings:
       link: true
@@ -47,7 +56,7 @@ content:
     type: entity_reference_label
     region: content
   field_popularity:
-    weight: 106
+    weight: 5
     label: above
     settings:
       thousand_separator: ''
@@ -56,24 +65,16 @@ content:
     type: number_integer
     region: content
   field_release_date:
-    weight: 104
+    weight: 4
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      date_format: m/d/Y
     third_party_settings: {  }
-    type: datetime_default
-    region: content
-  field_spotify_id:
-    weight: 108
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    type: string
+    type: datetime_custom
     region: content
   field_spotify_song_link:
-    weight: 102
+    weight: 2
     label: above
     settings:
       trim_length: 80
@@ -85,8 +86,9 @@ content:
     type: link
     region: content
   links:
-    weight: 100
+    weight: 0
+    region: content
     settings: {  }
     third_party_settings: {  }
-    region: content
-hidden: {  }
+hidden:
+  field_spotify_id: true

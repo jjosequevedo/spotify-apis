@@ -281,7 +281,7 @@ $config_directories = array(
  *   service requires the install profile use the 'install_profile' container
  *   parameter. Functional code can use \Drupal::installProfile().
  */
-$settings['install_profile'] = 'dc';
+//$settings['install_profile'] = 'standard';
 
 /**
  * Salt for one-time login links, cancel links, form tokens, etc.

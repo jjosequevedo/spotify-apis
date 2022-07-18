@@ -1,4 +1,4 @@
-uuid: 777cb87d-a760-420b-ab3f-56844f45341c
+uuid: df112590-601d-49d6-9d00-54fa2a87e86f
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ _core:
 id: dc_local_actions
 theme: dc
 region: content
-weight: -5
+weight: -20
 provider: null
 plugin: local_actions_block
 settings:

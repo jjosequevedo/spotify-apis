@@ -22,7 +22,7 @@
         "drupal/core-recommended": "^8.8",
         "drupal/core-vendor-hardening": "^8.8",
         "drupal/pathauto": "^1.8",
-        "drupal/views_bootstrap": "^4.3"
+        "drupal/twig_tweak": "^2.9"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -30,7 +30,14 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-vendor-hardening": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     },
     "extra": {
         "drupal-scaffold": {

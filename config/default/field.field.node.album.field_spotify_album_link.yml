@@ -1,0 +1,23 @@
+uuid: 554e0b29-ffe6-49a3-a53d-3bf05c62041a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_spotify_album_link
+    - node.type.album
+  module:
+    - link
+id: node.album.field_spotify_album_link
+field_name: field_spotify_album_link
+entity_type: node
+bundle: album
+label: 'Spotify''s album link'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  link_type: 16
+  title: 2
+field_type: link
