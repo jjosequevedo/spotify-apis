@@ -11,7 +11,6 @@ Clone this repo into your Projects directory
 git clone https://git.jobsity.com/jobsity/drupal-challenge challenge-drupal
 cd challenge-drupal
 
-
 ### Installation
 Run command _fin init_ and the installation will start.
 
