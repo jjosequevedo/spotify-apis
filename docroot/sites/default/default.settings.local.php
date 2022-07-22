@@ -64,7 +64,7 @@ $settings['file_chmod_file'] = 0666;
 # File system settings.
 $config['system.file']['path']['temporary'] = '/tmp';
 # Trusted host configuration.
-$settings['trusted_host_patterns'] = ['^drupalchallenge\.docksal\.site$'];
+$settings['trusted_host_patterns'] = ['^testspotifyapi\.docksal\.site$'];
 # Location of the site configuration files.
 $settings['config_sync_directory'] = dirname($app_root) . '/config/default';
 

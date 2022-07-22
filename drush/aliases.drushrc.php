@@ -1,7 +1,7 @@
 <?php
 
 // @docksal Drush alias
-$aliases['docksal'] = array(
+$aliases['docksal'] = [
   'root' => '/var/www/docroot',
-  'uri' => 'drupal8.docksal',
-);
+  'uri' => 'testspotifyapi.docksal.site',
+];

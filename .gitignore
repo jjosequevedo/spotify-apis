@@ -7,3 +7,13 @@ docroot/sites/*/settings.local.php
 docroot/sites/*/files
 .DS_Store
 /docroot/modules/contrib/
+/docroot/vendor/
+/docroot/core/
+/docroot/libraries/
+/docroot/themes/contrib/
+/docroot/profiles/contrib/
+
+# Database Dumps
+*.sql.gz
+*.sql
+*.zip

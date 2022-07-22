@@ -8,14 +8,14 @@ Follow Docksal environment setup instructions
 
 ### Step #2: Project setup
 Clone this repo into your Projects directory
-git clone https://git.jobsity.com/jobsity/drupal-challenge challenge-drupal
-cd challenge-drupal
+git clone git@github.com:jjosequevedo/spotify-apis.git spotify-apis
+cd spotify-apis
 
 ### Installation
 Run command _fin init_ and the installation will start.
 
 ### Point your browser to
-http://challengedrupal.docksal.site
+http://testspotifyapi.docksal.site
 
 Log in with these credentials:
 
